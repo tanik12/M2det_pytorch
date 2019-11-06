@@ -1,3 +1,10 @@
+# DEMOを開始するまで簡易手順書
+　・pythorch install後に下記をinstall<br>
+ 　 pip install opencv-python tqdm addict cython (cythonは必要かはわからない)<br>
+　・modelの重みをダウンロードしてwightsフォルダに置く<br>
+   重みのダウンロード先：https://drive.google.com/file/d/1NM1UDdZnwHwiNDxhcP-nndaWj24m-90L/view<br>
+ 
+# 以降元サイトの内容
 # M2Det
 Codebase for AAAI2019 "M2Det: A Single-Shot Object Detector based on Multi-Level Feature Pyramid Network" [[Paper link]](https://qijiezhao.github.io/imgs/m2det.pdf)
 
