@@ -27,8 +27,11 @@ model = dict(
 train_cfg = dict(
     cuda = True,
     warmup = 5,
+    #################
+    #--- add tani ---
     per_batch_size = 4,
     #per_batch_size = 16,
+    #################
     lr = [0.004, 0.002, 0.0004, 0.00004, 0.000004],
     gamma = 0.1,
     end_lr = 1e-6,
