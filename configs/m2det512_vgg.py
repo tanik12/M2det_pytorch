@@ -12,7 +12,8 @@ model = dict(
         num_scales = 6,
         sfam = False,
         smooth = True,
-        num_classes = 81,
+        #num_classes = 81,
+        num_classes = 82,
         ),
     rgb_means = (104, 117, 123),
     p = 0.6,
@@ -29,7 +30,7 @@ train_cfg = dict(
     warmup = 5,
     #################
     #--- add tani ---
-    per_batch_size = 4,
+    per_batch_size = 8,
     #per_batch_size = 16,
     #################
     lr = [0.004, 0.002, 0.0004, 0.00004, 0.000004],
@@ -67,8 +68,8 @@ dataset = dict(
     VOC = dict(
         #################
         #--- add tani ---
-        train_sets = [('2007', 'trainval')],
-        eval_sets = [('2007', 'test')],
+        train_sets = [('2007', 'trainval'), ('0000', 'train')],
+        eval_sets = [('2007', 'test'), ('0000', 'test')],
         #train_sets = [('2007', 'trainval'), ('2012', 'trainval')],
         #eval_sets = [('2007', 'test')],
         #################
