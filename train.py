@@ -19,8 +19,8 @@ parser = argparse.ArgumentParser(description='M2Det Training')
 parser.add_argument('-c', '--config', default='configs/m2det320_vgg16.py')
 #################
 #--- add tani ---
-parser.add_argument('-d', '--dataset', default='VOC', help='VOC or COCO dataset')
-#parser.add_argument('-d', '--dataset', default='COCO', help='VOC or COCO dataset')
+#parser.add_argument('-d', '--dataset', default='VOC', help='VOC or COCO dataset')
+parser.add_argument('-d', '--dataset', default='COCO', help='VOC or COCO dataset')
 #################
 parser.add_argument('--ngpu', default=1, type=int, help='gpus')
 parser.add_argument('--resume_net', default=None, help='resume net for retraining')
