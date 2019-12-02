@@ -60,7 +60,7 @@ colors = [_to_color(x, base) for x in range(cfg.model.m2det_config.num_classes)]
 cats = [_.strip().split(',')[-1] for _ in open('data/coco_labels.txt','r').readlines()]
 labels = tuple(['__background__'] + cats)
 
-def draw_detection(im, bboxes, scores, cls_inds, fps, thr=0.2):
+def draw_detection(im, bboxes, scores, cls_inds, fps, thr=0.9):
     imgcv = np.copy(im)
     h, w, _ = imgcv.shape
     for i, box in enumerate(bboxes):
