@@ -27,7 +27,8 @@ class COCODetection(data.Dataset):
     def __init__(self, root, image_sets, preproc=None, target_transform=None,
                  dataset_name='COCO'):
         self.root = root
-        self.data_path = os.path.join(os.path.expanduser("~"),'data')
+        self.data_path = os.path.join(os.path.expanduser("~"),'data_own')
+        #self.data_path = os.path.join(os.path.expanduser("~"),'data_test')
         #self.cache_path = os.path.join(self.data_path, 'coco_cache')
         self.cache_path = os.path.join(self.data_path, 'coco')
         self.image_set = image_sets
@@ -41,7 +42,6 @@ class COCODetection(data.Dataset):
             'valminusminival2014' : 'val2014',  # val2014 \setminus minival2014
             'test-dev2015' : 'test2015',
         }
-
         for (year, image_set) in image_sets:
             coco_name = image_set+year
             data_name = (self._view_map[coco_name]
@@ -50,13 +50,17 @@ class COCODetection(data.Dataset):
             annofile = self._get_ann_file(coco_name)
             _COCO = COCO(annofile)
             self._COCO = _COCO
+            ###print("GGGGGGGG: ", self._COCO)
             self.coco_name = coco_name
             cats = _COCO.loadCats(_COCO.getCatIds())
+            ###print("AAA********************* : ", cats[0]['name'])
             self._classes = tuple(['__background__'] + [c['name'] for c in cats])
             self.num_classes = len(self._classes)
+            ###print("classes: ", self.num_classes, self._classes)
             self._class_to_ind = dict(zip(self._classes, range(self.num_classes)))
             self._class_to_coco_cat_id = dict(zip([c['name'] for c in cats],
                                                   _COCO.getCatIds()))
+            ###print("BBB********************* : ", self._class_to_coco_cat_id)
             indexes = _COCO.getImgIds()
             self.image_indexes = indexes
             self.ids.extend([self.image_path_from_index(data_name, index) for index in indexes ])
@@ -74,7 +78,9 @@ class COCODetection(data.Dataset):
         # Example image path for index=119993:
         #   images/train2014/COCO_train2014_000000119993.jpg
         file_name = ('COCO_' + name + '_' +
-                     str(index).zfill(12) + '.jpg')
+                     str(index).zfill(9) + '.jpg')
+                     #str(index).zfill(6) + '.jpg')
+                     ####str(index).zfill(12) + '.jpg')
         image_path = os.path.join(self.root, 'images',
                               name, file_name)
         assert os.path.exists(image_path), \
@@ -149,6 +155,7 @@ class COCODetection(data.Dataset):
 
     def __getitem__(self, index):
         img_id = self.ids[index]
+        #print("AAA: ", index, img_id)
         target = self.annotations[index]
         img = cv2.imread(img_id, cv2.IMREAD_COLOR)
         height, width, _ = img.shape

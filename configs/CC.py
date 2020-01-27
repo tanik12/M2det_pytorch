@@ -47,9 +47,9 @@ def add_args(parser, cfg, prefix=''):
 
 
 def check_file_exist(filename, msg_tmpl='file "{}" does not exist'):
+    print("FFFFFFFFFFFF: ", filename)
     if not osp.isfile(filename):
         raise FileNotFoundError(msg_tmpl.format(filename))
-
         
 class Config(object):
     """A facility for config and config files.

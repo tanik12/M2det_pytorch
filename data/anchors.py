@@ -7,7 +7,8 @@ import os.path
 home = os.path.expanduser("~")
 ddir = os.path.join(home,"data/VOCdevkit/")
 VOCroot = ddir
-COCOroot = os.path.join(home,"data/coco/")
+#COCOroot = os.path.join(home,"data/coco/")
+COCOroot = os.path.join(home,"data_own/coco/")
 
 def reglayer_scale(size, num_layer, size_the):
     reg_layer_size = []

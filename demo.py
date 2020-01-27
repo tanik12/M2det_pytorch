@@ -59,6 +59,7 @@ base = int(np.ceil(pow(cfg.model.m2det_config.num_classes, 1. / 3)))
 colors = [_to_color(x, base) for x in range(cfg.model.m2det_config.num_classes)]
 cats = [_.strip().split(',')[-1] for _ in open('data/coco_labels.txt','r').readlines()]
 labels = tuple(['__background__'] + cats)
+print("#################### labels: ", labels)
 
 def draw_detection(im, bboxes, scores, cls_inds, fps, thr=0.2):
     imgcv = np.copy(im)
@@ -154,6 +155,8 @@ while True:
         im2show = cv2.resize(im2show,
                              (int(1000. * float(im2show.shape[1]) / im2show.shape[0]), 1000))
     if args.show:
+        im2show = cv2.resize(im2show,
+                             (int(500. * float(im2show.shape[1]) / im2show.shape[0]), 500))
         cv2.imshow('test', im2show)
         if cam < 0 and not video:
             cv2.waitKey(5000)

@@ -13,7 +13,7 @@ model = dict(
         sfam = False,
         smooth = True,
         #num_classes = 81,
-        num_classes = 82,
+        num_classes = 12,
         ),
     rgb_means = (104, 117, 123),
     p = 0.6,
@@ -30,7 +30,7 @@ train_cfg = dict(
     warmup = 5,
     #################
     #--- add tani ---
-    per_batch_size = 8,
+    per_batch_size = 5,
     #per_batch_size = 16,
     #################
     lr = [0.004, 0.002, 0.0004, 0.00004, 0.000004],
@@ -75,13 +75,16 @@ dataset = dict(
         #################
         ),
     COCO = dict(
-        train_sets = [('2014', 'train'), ('2014', 'valminusminival')],
-        eval_sets = [('2014', 'minival')],
-        test_sets = [('2015', 'test-dev')],
+        train_sets = [('9999', 'train')],
+        #train_sets = [('2014', 'train')],
+        #eval_sets = [('2014', 'minival')],
+        #test_sets = [('2015', 'test-dev')],
         )
     )
 
 import os
 home = os.path.expanduser("~")
 VOCroot = os.path.join(home,"data/VOCdevkit/")
-COCOroot = os.path.join(home,"data/coco/")
+#COCOroot = os.path.join(home,"data/coco/")
+#COCOroot = os.path.join(home,"data_test/coco/")
+COCOroot = os.path.join(home,"data_own/coco/")
